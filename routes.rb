@@ -9,30 +9,30 @@ class Ideas < Sinatra::Base
   end
 
   post "/order" do
-  Order.create(
+  Restaurant.create(
     title: params[:title],
     description: params[:description])
-  redirect "/restaurant"
+  redirect "/"
   end
 
-  get "/restaurant" do
-  @order = Order.all
+  get "/order" do
+  @order = Restaurant.all
   erb :restaurant
   end
 
   get "/restaurant/:id/edit" do
-  @order = Order.find(params[:id])
+  @order = Restaurant.find(params[:id])
   erb :edit
   end
 
   put "/restaurant/:id" do
-  order = Order.find(params[:id])
+  order = Restaurant.find(params[:id])
   order.update(title: params[:title], description: params[:description])
   redirect "/restaurant"
   end
 
   delete "/restaurant/:id" do
-  Order.find(params[:id]).destroy
+  Restaurant.find(params[:id]).destroy
   redirect "/restaurant"
   end
 
