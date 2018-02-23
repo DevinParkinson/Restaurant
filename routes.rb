@@ -32,7 +32,7 @@ class Ideas < Sinatra::Base
   end
 
   delete "/restaurant/:id" do
-  Restaurant.find(params[:id]).destroy
+  # Restaurant.find(params[:id]).destroy
   redirect "/restaurant"
   end
 
